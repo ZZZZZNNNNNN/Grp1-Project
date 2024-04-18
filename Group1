@@ -1,0 +1,891 @@
+#include <iostream>
+#include <windows.h>
+#include <stdlib.h>
+#include <regex>
+#include <climits>
+using namespace std;
+
+
+int pin, choice;
+long int available_balance = 0.0;
+int verification;
+
+string n15 = "\t\t\t\t\t";
+
+//Introduction
+void showdata();
+
+void simCard();
+
+void cashIn();
+
+void send();
+
+void load();
+
+void transfer();
+
+void borrow();
+
+
+
+
+
+
+
+//Registration Variables
+class Register
+{
+
+public:
+    string FirstN,MiddleN,LastN,Email,country,birthDate,sex;
+
+    long int password,Mnumber;
+
+
+    bool Email_check(string email)
+{
+
+    const regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+    return regex_match(email, pattern);
+}
+
+};
+
+//Log In Variables
+class LogIn
+{
+public:
+    string inpEmail;
+    int inpPassword, uNumber;
+
+
+
+};
+
+
+
+
+int main()
+{
+
+    const char n15[]= "\t\t\t\t\t";
+    showdata();
+
+    //register
+    Register newUser;
+    //Login
+    LogIn newLogin;
+    cout<<n15;
+    cout<<"Welcome to GCash\n\n";
+
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"                     GCASH"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+
+    //Pick
+    char pick;
+    cout<<n15;
+    cout<<"A. Register \n";
+    cout<<n15;
+    cout<<"B. Log in \n";
+    cout<<n15;
+    cout<<"Choose: ";
+    cin>>pick;
+
+    system("CLS");
+
+
+    switch(pick){
+        //registration
+case 'A':
+    {
+
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"                     GCASH"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+
+    cout<<n15;
+    cout<<"Enter your mobile number\n";
+    cout<<n15;
+    cout<<"+63 ";
+    cin>>newUser.Mnumber;
+
+    system("CLS");
+
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"                     GCASH"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+
+    cout<<n15;
+    cout<<"Gcash Registration: \n\n";
+
+
+
+
+    cout<<n15;
+    cout<<"Enter your First name: ";
+    cin>>newUser.FirstN;
+    cin.ignore(INT_MAX, '\n');
+
+    cout<<n15;
+    cout<<"Enter your Middle Initial: ";
+    cin>>newUser.MiddleN;
+    cin.ignore(INT_MAX, '\n');
+
+    cout<<n15;
+    cout<<"Enter your Last Name: ";
+    getline(cin,newUser.LastN);
+
+    cout<<n15;
+    cout<<"Enter your birthdate: ";
+    getline(cin,newUser.birthDate);
+    cin.ignore(INT_MAX, '\n');
+
+    cout<<n15;
+    cout<<"Enter your gender: ";
+    cin>>newUser.sex;
+
+    cout<<n15;
+    cout<<"Enter your Country: ";
+    cin>>newUser.country;
+    cin.ignore(INT_MAX, '\n');
+
+
+    system("CLS");
+
+
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"                     GCASH"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"Enter your email:";
+    cin>>newUser.Email;
+
+
+    // Email Security
+    if (newUser.Email_check(newUser.Email))
+    {
+        /* code */
+        cout<<n15;
+        cout<<"Processing..." << endl;
+        Sleep(1000);
+    }
+    else
+    {
+        cout<<n15;
+        cout<<"Processing...";
+        Sleep(1000);
+        cout << "\n"<<n15<< "Your Email Id is Invalid..." << endl;
+        return 0;
+    }
+
+
+    cout<<n15;
+    cout<<"Enter your disired pin: ";
+    cin>>newUser.password;
+
+
+    cout<<"\n\n";
+    cout<<n15;
+    cout<<"User Personal Information\n\n";
+
+    cout<<n15;
+    cout<<"Mobile Number:+63-";
+    cout<<newUser.Mnumber<<endl;
+
+    cout<<n15;
+    cout<<"Name: ";
+    cout<<newUser.LastN <<" "
+    << newUser.FirstN <<" "
+    << newUser.MiddleN<<"."<<endl;
+
+
+    cout<<n15;
+    cout<<"BirthDate: ";
+    cout<<newUser.birthDate<<endl;
+
+    cout<<n15;
+    cout<<"Address: ";
+    cout<<newUser.country<<endl;
+
+    cout<<n15;
+    cout<<"Email Address: ";
+    cout<<newUser.Email<<endl;
+
+
+    cout<<n15;
+    cout<<"Pin: ";
+    cout<<newUser.password<<endl;
+
+
+
+    cout<<"\n\n"<<n15;
+    cout<<"Processing"<<"."<<"."<<".\n";
+    Sleep(10000);
+    system("CLS");
+
+
+    //If registration is Successful, Log In form
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"                     GCASH"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+
+
+    cout<<n15;
+    cout<<"Successfully Registered your account, please login below.\n";
+
+    cout<<"\n"<<n15;
+    cout<<"Enter your Email: ";
+    cin>>newLogin.inpEmail;
+
+    cout<<"\n"<<n15;
+    cout<<"Enter your mobile number:63+-";
+    cin>>newLogin.uNumber;
+
+    cout<<"\n"<<n15;
+    cout<<"Enter your Pin: ";
+    cin>>newLogin.inpPassword;
+    break;
+    }
+    case 'B':
+        //Log In
+
+    {
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"                     GCASH"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"Enter your Email: ";
+    cin>>newLogin.inpEmail;
+
+    cout<<"\n"<<n15;
+    cout<<"Enter your mobile number: ";
+    cin>>newLogin.uNumber;
+
+    cout<<"\n"<<n15;
+    cout<<"Enter your Pin: ";
+    cin>>newLogin.inpPassword;
+
+    break;
+    }
+
+    }
+
+
+//Security
+
+    if(newLogin.inpEmail == newUser.Email && newLogin.uNumber == newUser.Mnumber && newLogin.inpPassword == newUser.password){
+
+
+    cout<<"\n"<<n15;
+        cout<<"Successfully Logged in, loading your dashboard...\n\n";
+        Sleep(5000);
+        system("CLS");
+
+
+    int default_pin = newUser.password;
+    int pin, choice;
+
+
+    //Main
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"                     GCASH"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+
+    cout<<n15;
+    cout<<"Log in to continue... "<<endl;
+    cout<<n15;
+    cout<<"Enter your 4 Digit PIN code: ";
+    cin>>pin;
+
+
+    if(pin != default_pin)
+        {
+            cout<<n15;
+        cout<<"Invalid PIN code. Existing program..."<<endl;
+        return 0;
+    }
+    system("CLS");
+    cout<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+    cout<<n15;
+    cout<<"\t\t Welcome to Gcash \n";
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl;
+    cout<<n15;
+    cout<<"____________________________________________________"<<endl<<endl;
+
+    do
+
+        {
+        cout<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl<<endl;
+        cout<<n15;
+        cout<<newUser.FirstN <<" "<< newUser.LastN<<"             "<<"Available Balance: Php "<<available_balance<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl<<endl;
+        cout<<n15;
+        cout<<"Please Choose a transaction: \n";
+        cout<<n15;
+        cout<<"1. Cash in\n";
+        cout<<n15;
+        cout<<"2. Send \n";                                                                              //Choices
+        cout<<n15;
+        cout<<"3. Load \n";
+        cout<<n15;
+        cout<<"4. Transfer \n";
+        cout<<n15;
+        cout<<"5. Bills \n";
+        cout<<n15;
+        cout<<"6. Profile \n";
+        cout<<n15;
+        cout<<"7. Borrow \n";
+        cout<<n15;
+        cout<<"8. Log out \n";
+        cout<<n15;
+        cin>>choice;
+
+
+        switch(choice)
+        {
+
+    case 0:
+        {
+
+            cout<<n15;
+            cout<<"Logging off..."<<endl<<endl;
+            break;
+        }
+
+    case 1:
+
+        {
+            cashIn();
+            break;
+        }
+
+
+    case 2:
+
+        {
+
+            send();
+
+        break;
+        }
+
+
+    case 3:
+
+        {
+            load();
+
+            break;
+        }
+
+
+    case 4:
+
+        {
+            transfer();
+
+
+            break;
+        }
+
+    case 5:
+
+        {
+        system("CLS");
+        string consumer_name, account_num;
+        double bill_amount;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"___________________________________________\n\n";
+        cout<<n15;
+        cout<<n15;
+        cout<<"\tPay your LASURECO BILL \n";
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"___________________________________________\n\n";
+        if(choice == 5){
+        cout<<n15;
+        cout<<"Please enter the consumer's name: ";
+        cin>>consumer_name;
+        cout<<n15;
+        cout<<"Please enter the 10-Digit account number: ";
+        cin>>account_num;
+        cout<<n15;
+        cout<<"Please enter the bill amount: P";
+        cin>>bill_amount;
+        cout<<n15<<"Verication: Press 1 to confirm it\n";
+        cout<<n15<<"1.Confirm\n";
+        cout<<n15<<"2.Exit\n";
+        cout<<n15<<"Press: ";
+            cin>>verification;
+            if(verification != 1)
+                {
+                    cout<<n15;
+                    cout<<"Transaction Denied\n";
+                    return 0;
+
+            }
+        if(bill_amount > available_balance){
+                cout<<n15;
+            cout<<"Processing...\n";
+            Sleep(1000);
+        cout<<n15;
+            cout<<"Bill payment successful."<<endl<<n15<<"Current balance: P"<<available_balance<<endl<<endl;
+        }}
+
+        break;
+
+        }
+
+    case 6:
+        {
+            system("CLS");
+    cout<<n15;
+    cout<<"User Personal Information\n\n";
+
+
+    cout<<n15;
+    cout<<"Available Balance: "<<available_balance<<endl;
+
+
+    cout<<n15;
+    cout<<"Name: ";
+    cout<<newUser.FirstN <<" "
+    << newUser.LastN
+    <<endl;
+
+     cout<<n15;
+    cout<<"Mobile Number:+63 ";
+    cout<<newUser.Mnumber<<endl;
+
+    cout<<n15;
+    cout<<"Email Address: ";
+    cout<<newUser.Email<<endl;
+
+    cout<<n15;
+    cout<<"BirthDate: ";
+    cout<<newUser.birthDate<<endl;
+
+    cout<<n15;
+    cout<<"Country: ";
+    cout<<newUser.country<<endl;
+
+    break;
+
+        }
+
+    case 7:
+    {
+        borrow();
+        break;
+
+    }
+
+    case 8:
+    {
+    system("CLS");
+      cout<<n15;
+     cout<<"Thank you for using Gcash!\n";
+      cout<<n15;
+      cout<<"Logging Off...";
+    Sleep(1000);
+     return 0;
+    }
+
+
+    default:
+        cout<<n15;
+        cout<<"Invalid Choice.Please Try Again.\n";
+        break;
+
+        }
+
+        }while(choice != 0);
+
+
+    }
+    else
+    {
+        cout<<n15;
+        cout<<"\n"<<n15<<"LogIn Failed, Wrong Username or password, Try again later!";
+    }
+
+
+
+
+
+
+
+
+}
+
+void showdata()
+{
+
+
+	char arrshow[]={'G','-','C','A','S','H',' ',' ',' '};
+	cout<<"\n\n\n\n\n\n\t\t\t";
+	for(int i=0;i<7;i++)
+	{
+	    cout<<"\t";
+		cout<<arrshow[i];
+		Sleep(500);
+
+	}
+	system("CLS");
+
+}
+
+void simCard()
+{
+    char simC;
+
+    cout<<n15;
+    cout<<"Choose Telco\n";
+    cout<<n15;
+    cout<<"T. TNT\n";
+    cout<<n15;
+    cout<<"D. DITO\n";
+    cout<<n15;
+    cout<<"S. SMART\n";
+    cout<<n15;
+    cout<<"G. GLOBE\n";
+    cout<<n15;
+    cout<<"M. TM\n";
+    cout<<n15;
+    cout<<"O. Gomo\n";
+    cout<<n15;
+    cin>>simC;
+    cout<<endl<<endl;
+
+    switch(simC)
+    {
+    case 'T':
+        cout<<n15;
+        cout<<"TNT\n";
+        break;
+
+    case 'D':
+        cout<<n15;
+        cout<<"DITO\n";
+        break;
+
+    case 'S':
+        cout<<n15;
+        cout<<"SMART\n";
+        break;
+
+    case 'G':
+        cout<<n15;
+        cout<<"GLOBE\n";
+        break;
+
+    case 'M':
+        cout<<n15;
+        cout<<"TM\n";
+        break;
+
+    case 'O':
+        cout<<n15;
+        cout<<"O\n";
+        break;
+    default:
+        cout<<n15;
+        cout<<"Error, Please try again.";
+    }
+
+
+
+}
+
+
+void cashIn()
+{
+    system("CLS");
+            double cash_in_amount;
+            cout<<n15;
+            cout<<"____________________________________________________"<<endl;
+            cout<<n15;
+            cout<<"____________________________________________________\n\n";
+            cout<<n15;
+            cout<<"\t\tCash in"<<endl;
+            cout<<n15;
+            cout<<"____________________________________________________"<<endl;
+            cout<<n15;
+            cout<<"____________________________________________________\n\n";
+            cout<<n15;
+            cout<<"Please enter the amount to cash in: P";
+            cin>>cash_in_amount;
+            available_balance += cash_in_amount;
+            cout<<n15;
+            cout<<"Verication: Press 1 to confirm it\n";
+            cout<<n15<<"1.Confirm\n";
+            cout<<n15<<"2.Exit\n";
+            cout<<n15<<"Press: ";
+            cin>>verification;
+            if(verification != 1)
+                {
+            cout<<n15;
+            cout<<"Transaction Denied\n";
+
+            }
+            cout<<n15;
+            cout<<"Processing...\n";
+            Sleep(1000);
+            cout<<n15;
+            cout<<"Cash in Successful."<<endl<<"\t\t\t\t\tCurrent balance: P"<<available_balance<<endl<<endl;
+}
+
+void send()
+{
+            system("CLS");
+        string gcash_number;
+        double send_amount;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________\n\n";
+        cout<<n15;
+        cout<<"\tSend Money to another Gcash user"<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________\n\n";
+        cout<<n15;
+        cout<<"Please enter the Gcash Number of the recipient: ";
+        cin>>gcash_number;
+        cout<<n15;
+        cout<<"Enter the amount to send: P";
+        cin>>send_amount;
+        cout<<n15;
+        cout<<"Verication: Press 1 to confirm it\n";
+        cout<<n15<<"1.Confirm\n";
+        cout<<n15<<"2.Exit\n";
+        cout<<n15<<"Press: ";
+
+        cin>>verification;
+        if(verification != 1)
+                {
+        cout<<n15;
+        cout<<"Transaction Denied\n";
+
+            }
+        if(send_amount > available_balance){
+        cout<<n15;
+        cout<<"Insufficient balance. Please try again.\n";
+        }else{
+        cout<<n15;
+        cout<<"Processing...\n";
+        Sleep(1000);
+        available_balance -= send_amount;
+        cout<<n15;
+        cout<<"Payment successful."<<endl<<n15<<"Current Balance: P"<<available_balance<<endl<<endl;
+
+
+}}
+
+
+//Load
+void load()
+{
+
+            system("CLS");
+            string contact_number;
+            double load_amount;
+            cout<<n15;
+            cout<<"____________________________________________________"<<endl;
+            cout<<n15;
+            cout<<"____________________________________________________\n\n";
+            cout<<n15;
+            cout<<"\tBuy load for any network\n";
+            cout<<n15;
+            cout<<"____________________________________________________"<<endl;
+            cout<<n15;
+            cout<<"____________________________________________________\n\n";
+            simCard();
+            cout<<n15;
+            cout<<"Please enter the contact number: ";
+            cin>>contact_number;
+            cout<<n15;
+            cout<<"Please enter the load amount: P";
+            cin>>load_amount;
+            cout<<n15;
+            cout<<"Verication: Press 1 to confirm\n";
+            cout<<n15<<"1.Confirm\n";
+            cout<<n15<<"2.Exit\n";
+            cout<<n15<<"Press: ";
+            cin>>verification;
+            if(verification != 1)
+                {
+            cout<<n15;
+            cout<<"Transaction Denied\n";
+
+            }
+            if(load_amount > available_balance){
+            cout<<n15;
+            cout<<"Insufficient balance. Please try again.\n";
+            }else{
+            cout<<n15;
+            cout<<"Processing...\n";
+            Sleep(1000);
+            available_balance -= load_amount;
+            cout<<n15;
+            cout<<"Load payment successful."<<endl<<n15<<"Current balance: P"<<available_balance<<endl<<endl;
+            }
+
+
+}
+
+void transfer()
+{
+    system("CLS");
+        string accout_name;
+        string account_number;
+        double transfer_amount;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________\n\n";
+        cout<<n15;
+        cout<<" Transfer funds to another Bank accunt\n";
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"____________________________________________________\n\n";
+        cout<<n15;
+        cout<<"Please enter the recipient's account name: ";
+        cin>>accout_name;
+        cout<<n15;
+        cout<<"Please enter the recipient's account number: ";
+        cin>>account_number;
+        cout<<n15;
+        cout<<"Please enter the transfer amount: P";
+        cin>>transfer_amount;
+        cout<<n15;
+        cout<<"Verication:\n";
+        cout<<n15<<"1.Confirm\n";
+        cout<<n15<<"2.Exit\n";
+        cout<<n15<<"Press: ";
+        cin>>verification;
+        if(verification != 1)
+                {
+        cout<<n15;
+        cout<<"Transaction Denied\n";
+
+
+            }
+        if(transfer_amount > available_balance){
+        cout<<n15;
+        cout<<"Insufficient balance. Please try again.\n";
+        }else{
+        cout<<n15;
+        cout<<"Processing...\n";
+        Sleep(1000);
+        available_balance -= transfer_amount;
+        cout<<n15;
+        cout<<"Load payment successful."<<endl<<n15<<"Current balance: P"<<available_balance<<endl<<endl;
+            }
+}
+
+
+void borrow()
+{
+    system("CLS");
+            double borrowAmount;
+            cout<<n15;
+            cout<<"____________________________________________________"<<endl;
+            cout<<n15;
+            cout<<"____________________________________________________\n\n";
+            cout<<n15;
+            cout<<"\t\tGLoan"<<endl;
+            cout<<n15;
+            cout<<"____________________________________________________"<<endl;
+            cout<<n15;
+            cout<<"____________________________________________________\n\n";
+            cout<<n15;
+            cout<<"Please enter the amount you want to loan: P";
+            cin>>borrowAmount;
+            available_balance += borrowAmount;
+            cout<<n15;
+            cout<<"Verication: Press 1 to confirm it\n";
+            cout<<n15<<"1.Confirm\n";
+            cout<<n15<<"2.Exit\n";
+            cout<<n15<<"Press: ";
+            cin>>verification;
+            if(verification != 1)
+                {
+            cout<<n15;
+            cout<<"Transaction Denied\n";
+
+            }
+            cout<<n15;
+            cout<<"Processing...\n";
+            Sleep(1000);
+            cout<<n15;
+            cout<<"Cash in Successful."<<endl<<"\t\t\t\t\tCurrent balance: P"<<available_balance<<endl<<endl;
+}
