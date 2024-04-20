@@ -5,9 +5,10 @@
 #include <climits>
 using namespace std;
 
-
+int num;
 int pin, choice;
 long int available_balance = 0.0;
+double borrowAmount;
 int verification;
 
 string n15 = "\t\t\t\t\t";
@@ -24,6 +25,8 @@ void send();
 void load();
 
 void transfer();
+
+void bills();
 
 void borrow();
 
@@ -76,8 +79,7 @@ int main()
     Register newUser;
     //Login
     LogIn newLogin;
-    cout<<n15;
-    cout<<"Welcome to GCash\n\n";
+
 
     cout<<n15;
     cout<<"____________________________________________________"<<endl;
@@ -89,6 +91,10 @@ int main()
     cout<<"____________________________________________________"<<endl;
     cout<<n15;
     cout<<"____________________________________________________"<<endl<<endl;
+
+
+    cout<<n15;
+    cout<<"Welcome to GCash\n\n";
 
     //Pick
     char pick;
@@ -214,6 +220,20 @@ case 'A':
     cin>>newUser.password;
 
 
+    while(!(newUser.password >> num))
+    {
+        cout<<n15;
+        cout<<"Error: enter a number: ";
+        cin>>newUser.password;
+        cin.clear();
+        cin.ignore(5, '\n');
+
+    }
+    cout<<n15;
+    cout<<"Processing...";
+    Sleep(500);
+
+
     cout<<"\n\n";
     cout<<n15;
     cout<<"User Personal Information\n\n";
@@ -234,7 +254,7 @@ case 'A':
     cout<<newUser.birthDate<<endl;
 
     cout<<n15;
-    cout<<"Address: ";
+    cout<<"Country: ";
     cout<<newUser.country<<endl;
 
     cout<<n15;
@@ -454,49 +474,8 @@ case 'A':
     case 5:
 
         {
-        system("CLS");
-        string consumer_name, account_num;
-        double bill_amount;
-        cout<<n15;
-        cout<<"____________________________________________________"<<endl;
-        cout<<n15;
-        cout<<"___________________________________________\n\n";
-        cout<<n15;
-        cout<<n15;
-        cout<<"\tPay your LASURECO BILL \n";
-        cout<<n15;
-        cout<<"____________________________________________________"<<endl;
-        cout<<n15;
-        cout<<"___________________________________________\n\n";
-        if(choice == 5){
-        cout<<n15;
-        cout<<"Please enter the consumer's name: ";
-        cin>>consumer_name;
-        cout<<n15;
-        cout<<"Please enter the 10-Digit account number: ";
-        cin>>account_num;
-        cout<<n15;
-        cout<<"Please enter the bill amount: P";
-        cin>>bill_amount;
-        cout<<n15<<"Verication: Press 1 to confirm it\n";
-        cout<<n15<<"1.Confirm\n";
-        cout<<n15<<"2.Exit\n";
-        cout<<n15<<"Press: ";
-            cin>>verification;
-            if(verification != 1)
-                {
-                    cout<<n15;
-                    cout<<"Transaction Denied\n";
-                    return 0;
+            bills();
 
-            }
-        if(bill_amount > available_balance){
-                cout<<n15;
-            cout<<"Processing...\n";
-            Sleep(1000);
-        cout<<n15;
-            cout<<"Bill payment successful."<<endl<<n15<<"Current balance: P"<<available_balance<<endl<<endl;
-        }}
 
         break;
 
@@ -534,6 +513,11 @@ case 'A':
     cout<<n15;
     cout<<"Country: ";
     cout<<newUser.country<<endl;
+
+    cout<<n15;
+    cout<<"Loan: ";
+    cout<<borrowAmount;
+
 
     break;
 
@@ -824,7 +808,7 @@ void transfer()
         cout<<"Please enter the recipient's account number: ";
         cin>>account_number;
         cout<<n15;
-        cout<<"Please enter the transfer amount: P";
+        cout<<"Please enter the transfer amount: ₱";
         cin>>transfer_amount;
         cout<<n15;
         cout<<"Verication:\n";
@@ -848,15 +832,65 @@ void transfer()
         Sleep(1000);
         available_balance -= transfer_amount;
         cout<<n15;
-        cout<<"Load payment successful."<<endl<<n15<<"Current balance: P"<<available_balance<<endl<<endl;
+        cout<<"Load payment successful."<<endl<<n15<<"Current balance: ₱"<<available_balance<<endl<<endl;
             }
+}
+
+void bills()
+{
+    system("CLS");
+        string consumer_name, account_num;
+        double bill_amount;
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"___________________________________________\n\n";
+        cout<<n15;
+        cout<<n15;
+        cout<<"\tPay your LASURECO BILL \n";
+        cout<<n15;
+        cout<<"____________________________________________________"<<endl;
+        cout<<n15;
+        cout<<"___________________________________________\n\n";
+        if(choice == 5){
+        cout<<n15;
+        cout<<"Please enter the consumer's name: ";
+        cin>>consumer_name;
+        cout<<n15;
+        cout<<"Please enter the 10-Digit account number: ";
+        cin>>account_num;
+        cout<<n15;
+        cout<<"Please enter the bill amount: P";
+        cin>>bill_amount;
+        cout<<n15<<"Verication: Press 1 to confirm it\n";
+        cout<<n15<<"1.Confirm\n";
+        cout<<n15<<"2.Exit\n";
+        cout<<n15<<"Press: ";
+            cin>>verification;
+            if(verification != 1)
+                {
+                    cout<<n15;
+                    cout<<"Transaction Denied\n";
+
+            }
+        if(bill_amount > available_balance){
+            cout<<n15;
+                cout<<"Insufficient balance. Please try again."<<endl;
+        }else{
+            available_balance -= bill_amount;
+            cout<<n15;
+            cout<<"Processing...\n";
+            Sleep(1000);
+        cout<<n15;
+            cout<<"Bill payment successful."<<endl<<n15<<"Current balance: P"<<available_balance<<endl<<endl;
+        }}
 }
 
 
 void borrow()
 {
     system("CLS");
-            double borrowAmount;
+            double limit = 20000;
             cout<<n15;
             cout<<"____________________________________________________"<<endl;
             cout<<n15;
@@ -868,6 +902,14 @@ void borrow()
             cout<<n15;
             cout<<"____________________________________________________\n\n";
             cout<<n15;
+            cout<<"You can borrow up to\n"<<n15<<" P 20,000.00\n\n"<<n15<<"Loan details\n";
+            cout<<n15;
+            cout<<"Payable in \t interest rate \t processing fee\n";
+            cout<<n15;
+            cout<<"  9-12mon \t    3.59% \t     3%\n\n";
+            cout<<n15;
+            cout<<"You can only loan once a month\n\n\n";
+            cout<<n15;
             cout<<"Please enter the amount you want to loan: P";
             cin>>borrowAmount;
             available_balance += borrowAmount;
@@ -877,15 +919,20 @@ void borrow()
             cout<<n15<<"2.Exit\n";
             cout<<n15<<"Press: ";
             cin>>verification;
-            if(verification != 1)
-                {
+            if(verification != 1 || borrowAmount > limit){
             cout<<n15;
             cout<<"Transaction Denied\n";
 
+            cout<<n15;
             }
+            else{
+
+
+
+
             cout<<n15;
             cout<<"Processing...\n";
             Sleep(1000);
             cout<<n15;
-            cout<<"Cash in Successful."<<endl<<"\t\t\t\t\tCurrent balance: P"<<available_balance<<endl<<endl;
+            cout<<"Loan Successful."<<endl<<"\t\t\t\t\tCurrent balance: P"<<available_balance<<endl<<endl;}
 }
