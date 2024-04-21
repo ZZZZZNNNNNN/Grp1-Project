@@ -195,6 +195,7 @@ case 'A':
     cout<<n15;
     cout<<"Enter your email:";
     cin>>newUser.Email;
+    cin.ignore(INT_MAX, '\n');
 
 
     // Email Security
@@ -218,6 +219,7 @@ case 'A':
     cout<<n15;
     cout<<"Enter your disired pin: ";
     cin>>newUser.password;
+    cin.ignore(INT_MAX, '\n');
 
 
     while(!(newUser.password >> num))
@@ -676,6 +678,7 @@ void cashIn()
                 {
             cout<<n15;
             cout<<"Transaction Denied\n";
+            exit(0);
 
             }
             cout<<n15;
@@ -717,6 +720,7 @@ void send()
                 {
         cout<<n15;
         cout<<"Transaction Denied\n";
+        exit(0);
 
             }
         if(send_amount > available_balance){
@@ -768,6 +772,7 @@ void load()
                 {
             cout<<n15;
             cout<<"Transaction Denied\n";
+            exit(0);
 
             }
             if(load_amount > available_balance){
@@ -820,6 +825,7 @@ void transfer()
                 {
         cout<<n15;
         cout<<"Transaction Denied\n";
+        exit(0);
 
 
             }
@@ -922,6 +928,7 @@ void borrow()
             if(verification != 1 || borrowAmount > limit){
             cout<<n15;
             cout<<"Transaction Denied\n";
+            exit(0);
 
             cout<<n15;
             }
