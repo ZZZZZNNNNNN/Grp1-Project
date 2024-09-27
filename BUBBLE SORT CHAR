@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+using namespace std;
+
+void display(int n, char arr[]){
+	for(int i = 0; i < n; i++){
+		cout<<arr[i]<<"  ";
+	}
+}
+
+int main(){
+	
+	
+	char n, holder,array[9] = {};
+	
+    cin.getline(array,sizeof(array)); 
+	
+	
+	
+	n = sizeof(array) / sizeof(array[0]);
+	
+	for(int i = 0; i < n; i++){
+		for(int j = i +1; j < n; j++){
+			if(array[i] > array[j]){
+				holder = array[i];
+				array[i] = array[j];
+				array[j] = holder;
+			}
+			
+		}
+	}
+	display(n, array);
+}
